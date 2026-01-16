@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>QR Tra Cứu – Lễ Khánh Thành Nhà Thờ Họ Bùi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --gold:#d6b46a;
+  --gold-soft:#f3e6c2;
+  --dark:#0f0c08;
+  --dark2:#1a140c;
+}
+
+html,body{
+  margin:0;
+  width:100%;
+  height:100%;
+  background:var(--dark);
+  overflow:hidden;
+  font-family:"Playfair Display","Times New Roman",serif;
+}
+
+.slide{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:
+    radial-gradient(circle at center, rgba(214,180,106,.18), transparent 60%),
+    linear-gradient(var(--dark),var(--dark2));
+  opacity:0;
+  transition:opacity 1s ease;
+  pointer-events:none;
+}
+
+.slide.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+h1{
+  font-size:4.2vw;
+  color:var(--gold);
+  margin-bottom:1vh;
+  letter-spacing:2px;
+}
+
+.subtitle{
+  font-size:2.2vw;
+  color:var(--gold-soft);
+  margin-bottom:4vh;
+}
+
+.qr-box{
+  background:#fff;
+  padding:20px;
+  border-radius:20px;
+  border:6px solid var(--gold);
+  box-shadow:0 0 35px rgba(214,180,106,.45);
+}
+
+.qr-box img{
+  width:28vw;
+  max-width:420px;
+}
+
+.hint{
+  margin-top:2vh;
+  font-size:1.7vw;
+  color:#ddd;
+}
+
+.footer{
+  position:absolute;
+  bottom:2vh;
+  text-align:center;
+  font-size:1.3vw;
+  color:#bbb;
+}
+
+.next-btn{
+  position:absolute;
+  right:4vw;
+  bottom:4vh;
+  padding:14px 32px;
+  font-size:1.4vw;
+  border-radius:30px;
+  border:2px solid var(--gold);
+  background:transparent;
+  color:var(--gold);
+  cursor:pointer;
+}
+
+.next-btn:hover{
+  background:var(--gold);
+  color:#000;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SLIDE 1: PHẢ HỆ -->
+<div class="slide active">
+  <h1>TRA CỨU PHẢ HỆ DÒNG HỌ</h1>
+  <div class="subtitle">Họ Bùi – Quỳnh Thắng</div>
+  <a href="https://buiquocoai.github.io/giaphahobui/" target="_blank">
+    <div class="qr-box">
+      <img src="qr-pha-he.png" alt="QR Phả hệ">
+    </div>
+  </a>
+  <div class="hint">Chạm vào mã QR để mở phả hệ</div>
+</div>
+
+<!-- SLIDE 2: TÀI CHÍNH -->
+<div class="slide">
+  <h1>TRA CỨU TÀI CHÍNH DÒNG HỌ</h1>
+  <div class="subtitle">Công khai – Minh bạch</div>
+  <a href="https://buiquocoai.github.io/Bao_Cao_Tai_Chinh_Bui_Toc/" target="_blank">
+    <div class="qr-box">
+      <img src="qr-tai-chinh.png" alt="QR Tài chính">
+    </div>
+  </a>
+</div>
+
+<!-- SLIDE 3: BẢNG VÀNG -->
+<div class="slide">
+  <h1>BẢNG VÀNG CUNG TIẾN</h1>
+  <div class="subtitle">Tri ân công đức tổ tiên</div>
+  <a href="https://buiquocoai.github.io/Bang_Vang_Cung_Tien_Bui_Toc/" target="_blank">
+    <div class="qr-box">
+      <img src="qr-bang-vang.png" alt="QR Bảng vàng">
+    </div>
+  </a>
+</div>
+
+<!-- SLIDE 4: VIDEO -->
+<div class="slide">
+  <h1>VIDEO TRUYỀN THỐNG DÒNG HỌ</h1>
+  <div class="subtitle">Tự hào họ Bùi Quỳnh Thắng</div>
+  <a href="https://www.youtube.com/watch?v=be8E44k0BuQ" target="_blank">
+    <div class="qr-box">
+      <img src="qr-video.png" alt="QR Video">
+    </div>
+  </a>
+</div>
+
+<div class="footer">
+  Thôn 3, Quỳnh Thắng, Nghệ An · Người tạo: Bùi Quốc Oai
+</div>
+
+<button class="next-btn" onclick="nextSlide()">Tiếp theo →</button>
+
+<script>
+let index = 0;
+const slides = document.querySelectorAll('.slide');
+
+function showSlide(i){
+  slides.forEach(s=>s.classList.remove('active'));
+  slides[i].classList.add('active');
+}
+
+function nextSlide(){
+  index = (index + 1) % slides.length;
+  showSlide(index);
+}
+
+setInterval(nextSlide, 12000);
+
+document.addEventListener('keydown', e=>{
+  if(e.key === "ArrowRight") nextSlide();
+});
+</script>
+
+</body>
+</html>
